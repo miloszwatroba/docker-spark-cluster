@@ -1,0 +1,38 @@
+version: "3.7"
+services:
+  spark-master:
+    image: spark:2.4.2
+    container_name: spark-master
+    hostname: spark-master
+    command: spark/bin/spark-class org.apache.spark.deploy.master.Master -h master
+      --ip spark-master
+      --port 7077
+      --webui-port 8080
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ./spark-data:/spark-data
+    networks:
+      - spark-network
+
+  spark-worker:
+    image: spark:2.4.2
+    depends_on:
+      - spark-master
+    command: spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      --webui-port 8080
+      spark://spark-master:7077
+    ports:
+      - 8080
+    volumes:
+      - ./spark-data:/spark-data
+    networks:
+      - spark-network
+
+networks:
+  spark-network:
+    name: spark-network
+    driver: bridge
+    ipam:
+      driver: default
