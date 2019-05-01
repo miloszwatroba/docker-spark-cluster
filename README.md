@@ -1,5 +1,5 @@
 # Docker Spark cluster
-Easiily scalable Docker based Spark Standalone Cluster created for testing and educational purposes.
+Easily scalable Docker based Spark Standalone Cluster created for testing and educational purposes. Inspired by Marco Villarreal's article on [Medium](https://medium.com/@marcovillarreal_40011/creating-a-spark-standalone-cluster-with-docker-and-docker-compose-ba9d743a157f).
 
 ## Getting started
 #### Build images
