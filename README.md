@@ -1,9 +1,11 @@
-# docker-spark-cluster
+# Docker Spark cluster
+Easiily scalable Docker based Spark Standalone Cluster created for testing and educational purposes.
 
-## Build images
+## Getting started
+#### Build images
 ```docker build -t spark:2.4.2 .```
 
-## Start cluster
+#### Start cluster
 ```docker-compose up -d```
 
 ## Scale cluster
@@ -16,5 +18,5 @@ spark:2.4.2 \
 /spark/bin/run-example SparkPi 10
 ```
 
-## Sharing file between host and containers
+## Share files between host and containers
 Create a directory called `spark-data` next to your `docker-compose.yml` - the contents of that directory will be available in `/spark-data` on your containers.
